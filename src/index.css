@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 300 7% 9%;
+    --foreground: 220 20% 95%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+
+    --primary: 356 85% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 100% 34%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 20% 90%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 260 100% 34%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 356 85% 57%;
+
+    --radius: 0.75rem;
+
+    /* Custom futuristic tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(356 85% 57%) 0%, hsl(356 85% 45%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(260 100% 34%) 0%, hsl(270 100% 45%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0 0% 100% / 0.9) 0%, hsla(0 0% 100% / 0.6) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(220 30% 15%) 0%, hsl(220 40% 8%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(222 33% 95%) 0%, hsl(220 30% 92%) 100%);
+    
+    --shadow-glass: 0 8px 32px hsla(220 30% 15% / 0.1);
+    --shadow-card: 0 4px 24px hsla(220 30% 15% / 0.08);
+    --shadow-glow: 0 0 40px hsla(356 85% 57% / 0.3);
+    --shadow-cyan-glow: 0 0 40px hsla(260 100% 34% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 220 20% 95%;
+
+    --card: 220 30% 12%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 220 30% 12%;
+    --popover-foreground: 220 20% 95%;
+
+    --primary: 356 85% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 100% 34%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 25% 18%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 260 100% 34%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 356 85% 57%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply overflow-x-hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-white/20 rounded-2xl;
+    box-shadow: var(--shadow-glass);
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px hsla(356 85% 57% / 0.3);
+  }
+  100% {
+    box-shadow: 0 0 40px hsla(356 85% 57% / 0.5);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
